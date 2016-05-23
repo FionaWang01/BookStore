@@ -15,9 +15,8 @@ class DetialViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var translatorLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
- 
+    @IBOutlet weak var textView: UITextView!
 
     var searchDetailResult :SearchResult?
     var downloadTask:NSURLSessionDownloadTask?
@@ -32,7 +31,18 @@ class DetialViewController: UIViewController {
 //            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
 //            title = self.searchDetailResult?.title
 //        }
-        
+//        scrollView.backgroundColor = UIColor.clearColor()
+//        scrollView.contentSize = summaryLabel.bounds.size
+//        scrollView.contentSize.width = 0
+//        scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+//        summaryLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        summaryLabel.numberOfLines = 0
+//
+        textView.backgroundColor = UIColor.clearColor()
+        //textView.textColor = UIColor.whiteColor()
+       // textView.font = UIFont.systemFontSize(20.0)
+        textView.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17.0)
+
         updateUI()
         
     }
@@ -45,8 +55,8 @@ class DetialViewController: UIViewController {
         authorLabel.text = searchDetailResult?.author
         translatorLabel.text = searchDetailResult?.translator
         publisherLabel.text = searchDetailResult?.publisher
-        summaryLabel.text = searchDetailResult?.summary
         priceLabel.text = searchDetailResult?.price
+        textView.text = searchDetailResult?.summary
         
     }
     
