@@ -25,6 +25,9 @@ class SearchViewController: UIViewController {
         tableView.rowHeight = 80.0
         searchBar.becomeFirstResponder()
         self.title = searchBar.text
+        
+        let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "NothingFoundCell")
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
 //        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
 //            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
@@ -167,6 +170,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if searchResults.count == 0 {
+            return  tableView.dequeueReusableCellWithIdentifier("NothingFoundCell", forIndexPath: indexPath)
+        }else{
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         let nameLabel = cell.viewWithTag(1000) as! UILabel
         let detailLabel = cell.viewWithTag(2000) as! UILabel
@@ -180,8 +186,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         if let url = NSURL(string:indexPath.largeImage){
             downloadTask = image.loadImageWithURL(url)
         }
-        
         return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
