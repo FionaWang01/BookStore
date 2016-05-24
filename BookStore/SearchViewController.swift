@@ -20,14 +20,16 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+
         tableView.rowHeight = 80.0
         searchBar.becomeFirstResponder()
         self.title = searchBar.text
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
-        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
-            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
-            
-        }
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
+//        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
+//            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
+//            
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -173,13 +175,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         nameLabel.text = indexPath.title
         detailLabel.text = indexPath.author
         image.image = UIImage(named: "Placeholder")
-//        image.layer.cornerRadius = image.frame.size.width/2
-//        image.clipsToBounds = true
+        image.layer.cornerRadius = image.frame.size.width/2
+        image.clipsToBounds = true
         if let url = NSURL(string:indexPath.largeImage){
             downloadTask = image.loadImageWithURL(url)
         }
-        
-        //image.backgroundColor = UIColor.yellowColor()
         
         return cell
     }
