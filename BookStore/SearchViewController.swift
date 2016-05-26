@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearch = false
     var downloadTask: NSURLSessionDownloadTask?
+    var isLoading = false
+    static let loadingCell = "LoadingView"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +28,11 @@ class SearchViewController: UIViewController {
         searchBar.becomeFirstResponder()
         self.title = searchBar.text
         
-        let cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
+        var cellNib = UINib(nibName: "NothingFoundCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "NothingFoundCell")
+        
+        cellNib = UINib(nibName: "LoadingView", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "LoadingView")
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
 //        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
 //            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
@@ -40,8 +45,12 @@ class SearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     func urlWithSearchText(searchText:String) -> NSURL{
-        let api = "https://api.douban.com/v2/book/search?tag=%@"
+        let api = "https://api.douban.com/v2/book/search?tag=%@&limit=200"
         let escaopSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         let urlString = String(format: api, escaopSearchText!)
         let url = NSURL(string: urlString)
@@ -126,8 +135,12 @@ class SearchViewController: UIViewController {
                 }
                 
                 if let authors = book["author"] as? [String]{
+                    if authors.count > 0{
                     let author = authors[0]
-                    searchResult.author = author
+                     searchResult.author = author
+                    }else{
+                        print("Index Out OF Range")
+                    }
                 }
                 
                 if let translators = book["translator"] as? [String]{
@@ -160,7 +173,9 @@ class SearchViewController: UIViewController {
 }
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !hasSearch{
+        if isLoading{
+            return 1
+        }else if !hasSearch{
             return 0
         }else if searchResults.count == 0 {
             return 1
@@ -170,7 +185,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if searchResults.count == 0 {
+        if isLoading{
+            let cell = tableView.dequeueReusableCellWithIdentifier("LoadingView", forIndexPath: indexPath)
+            let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+            spinner.startAnimating()
+            return cell
+        }else if searchResults.count == 0 {
             return  tableView.dequeueReusableCellWithIdentifier("NothingFoundCell", forIndexPath: indexPath)
         }else{
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
@@ -195,7 +215,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if searchResults.count == 0 {
+        if searchResults.count == 0 || isLoading{
             return nil
         }else{
             return indexPath
@@ -209,17 +229,27 @@ extension SearchViewController: UISearchBarDelegate{
             searchBar.resignFirstResponder()
             searchResults = [SearchResult]()
             hasSearch = true
+            isLoading = true
+            tableView.reloadData()
             
-            let url = urlWithSearchText(searchBar.text!)
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            
+            dispatch_async(queue){
+            
+            let url = self.urlWithSearchText(searchBar.text!)
             print("URL: \(url)")
-            if let jsonData = performRequestWithURL(url){
+            if let jsonData = self.performRequestWithURL(url){
                 print("Recieved JSON data: \(jsonData)")
-                if let dictionary = parseJSON(jsonData){
+                if let dictionary = self.parseJSON(jsonData){
                     print("Parse Dictionary:\(dictionary)")
-                    parseDictionary(dictionary as! [String:AnyObject])
-                    tableView.reloadData()
+                    self.parseDictionary(dictionary as! [String:AnyObject])
+                    self.isLoading = false
+                    self.tableView.reloadData()
+                    print("DONE!")
                     return
                 }
+                }
+                print("Error!")
             }
             
         }

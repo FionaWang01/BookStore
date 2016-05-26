@@ -17,6 +17,8 @@ class DetialViewController: UIViewController {
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var bookNameText: UITextView!
+   
 
     var searchDetailResult :SearchResult?
     var downloadTask:NSURLSessionDownloadTask?
@@ -26,22 +28,8 @@ class DetialViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 231.0/255.0, green: 95.0/255.0, blue: 53.0/255.0, alpha: 0.3)
-//        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
-//            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
-//            title = self.searchDetailResult?.title
-//        }
-//        scrollView.backgroundColor = UIColor.clearColor()
-//        scrollView.contentSize = summaryLabel.bounds.size
-//        scrollView.contentSize.width = 0
-//        scrollView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
-//        summaryLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-//        summaryLabel.numberOfLines = 0
-//
         textView.backgroundColor = UIColor.clearColor()
-        //textView.textColor = UIColor.whiteColor()
-       // textView.font = UIFont.systemFontSize(20.0)
-        textView.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17.0)
+         textView.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17.0)
 
         updateUI()
         
@@ -57,8 +45,14 @@ class DetialViewController: UIViewController {
         publisherLabel.text = searchDetailResult?.publisher
         priceLabel.text = searchDetailResult?.price
         textView.text = searchDetailResult?.summary
+        bookNameText.text = searchDetailResult?.title
         
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

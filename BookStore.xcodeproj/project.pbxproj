@@ -20,6 +20,7 @@
 		F29DB1A51CF026DE00673010 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DB1A41CF026DE00673010 /* SearchResult.swift */; };
 		F2EEBDFC1CF09F500052B467 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EEBDFB1CF09F500052B467 /* BookTableViewCell.swift */; };
 		F2F21C4F1CF4A071009762BF /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F21C4E1CF4A071009762BF /* NothingFoundCell.xib */; };
+		F2F21C511CF6D0AF009762BF /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F21C501CF6D0AF009762BF /* LoadingView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		F29DB1A41CF026DE00673010 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		F2EEBDFB1CF09F500052B467 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookTableViewCell.swift; path = ../BookTableViewCell.swift; sourceTree = "<group>"; };
 		F2F21C4E1CF4A071009762BF /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		F2F21C501CF6D0AF009762BF /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				F2EEBDFB1CF09F500052B467 /* BookTableViewCell.swift */,
 				F29DB1731CF0242B00673010 /* Main.storyboard */,
 				F2F21C4E1CF4A071009762BF /* NothingFoundCell.xib */,
+				F2F21C501CF6D0AF009762BF /* LoadingView.xib */,
 				F29DB1791CF0242B00673010 /* Assets.xcassets */,
 				F29DB17B1CF0242B00673010 /* LaunchScreen.storyboard */,
 				F29DB17E1CF0242B00673010 /* Info.plist */,
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F21C4F1CF4A071009762BF /* NothingFoundCell.xib in Resources */,
+				F2F21C511CF6D0AF009762BF /* LoadingView.xib in Resources */,
 				F29DB17D1CF0242B00673010 /* LaunchScreen.storyboard in Resources */,
 				F29DB17A1CF0242B00673010 /* Assets.xcassets in Resources */,
 				F29DB1751CF0242B00673010 /* Main.storyboard in Resources */,
