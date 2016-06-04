@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    
     func customizeAppearence(){
         let barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
         UISearchBar.appearance().barTintColor = barTintColor
@@ -24,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+//        let navigationController = window?.rootViewController as! UINavigationController
+//        let viewController = navigationController.viewControllers[2] as! BookMarkTableView
+//        viewController.managedContext = CoreDataStake.context 
         customizeAppearence()
         return true
     }

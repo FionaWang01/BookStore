@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BookStore/DetialViewController.swift"
-            timestampString = "485702401.130185"
+            timestampString = "485959800.827859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "DetialViewController"
             landmarkType = "3">
          </BreakpointContent>

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol DetialViewControllerDelegate {
+
+func addItemViewController(controller: DetialViewController, finishedAddItems item: SearchResult)
+}
+
 class DetialViewController: UIViewController {
     
     @IBOutlet weak var menuImage: UIImageView!
@@ -18,9 +23,14 @@ class DetialViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var bookNameText: UITextView!
+    
    
+    var searchDetailResult = SearchResult()
+    
+    var pushToStake = true
+    
+   var delegate : DetialViewControllerDelegate?
 
-    var searchDetailResult :SearchResult?
     var downloadTask:NSURLSessionDownloadTask?
     
     @IBAction func back(sender: UIButton) {
@@ -32,32 +42,44 @@ class DetialViewController: UIViewController {
          textView.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17.0)
 
         updateUI()
-        
     }
     
+    
     func updateUI(){
-        if let url = NSURL(string: searchDetailResult!.mediumImage){
+        
+        if let url = NSURL(string: searchDetailResult.mediumImage){
             downloadTask = menuImage.loadImageWithURL(url)
             print("imageURL:\(url)")
         }
-        authorLabel.text = searchDetailResult?.author
-        translatorLabel.text = searchDetailResult?.translator
-        publisherLabel.text = searchDetailResult?.publisher
-        priceLabel.text = searchDetailResult?.price
-        textView.text = searchDetailResult?.summary
-        bookNameText.text = searchDetailResult?.title
         
+        authorLabel.text = searchDetailResult.author
+        translatorLabel.text = searchDetailResult.translator
+        publisherLabel.text = searchDetailResult.publisher
+        priceLabel.text = searchDetailResult.price
+        textView.text = searchDetailResult.summary
+        bookNameText.text = searchDetailResult.title
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
 
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "ShowMarkCell"{
+//            let navigation = segue.destinationViewController as! UINavigationController
+//            let controller = navigation.topViewController as! BookMarkTableView
+//            controller.delegate = self
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func unWind(segue: UIStoryboardSegue) {
-    }
+    @IBAction func markToStake(sender: UIButton) {
+        let item = SearchResult()
+        item.title = searchDetailResult.title
+        delegate?.addItemViewController(self , finishedAddItems: item)
+        }
 }
+

@@ -114,6 +114,10 @@ class SearchViewController: UIViewController {
                     searchResult.publisher = publisher
                 }
                 
+                if let id = book["id"] as?String{
+                    searchResult.id = id
+                }
+                
                 if let pubdate = book["pubdate"] as? String{
                     searchResult.pubdate = pubdate
                 }

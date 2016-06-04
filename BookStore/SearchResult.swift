@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 class SearchResult{
+    var id = ""
     var title = ""
     var author = ""
     var translator = ""
