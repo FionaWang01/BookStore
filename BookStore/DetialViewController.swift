@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 protocol DetialViewControllerDelegate {
 
 func addItemViewController(controller: DetialViewController, finishedAddItems item: SearchResult)
@@ -30,6 +31,8 @@ class DetialViewController: UIViewController {
     var pushToStake = true
     
    var delegate : DetialViewControllerDelegate?
+    
+    var results = [SearchResult]()
 
     var downloadTask:NSURLSessionDownloadTask?
     
@@ -64,13 +67,13 @@ class DetialViewController: UIViewController {
         return UIStatusBarStyle.LightContent
     }
 
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "ShowMarkCell"{
-//            let navigation = segue.destinationViewController as! UINavigationController
-//            let controller = navigation.topViewController as! BookMarkTableView
-//            controller.delegate = self
-//        }
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "markStarBook"{
+            let navigation = segue.destinationViewController as! UINavigationController
+            let controller = navigation.topViewController as! BookMarkTableView
+            controller.searchResult = results
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,7 +81,14 @@ class DetialViewController: UIViewController {
     }
     @IBAction func markToStake(sender: UIButton) {
         let item = SearchResult()
-        item.title = searchDetailResult.title
+        item.title = bookNameText.text
+        item.author = authorLabel.text!
+        if let url = NSURL(string: item.mediumImage){
+            downloadTask = menuImage.loadImageWithURL(url)
+            print("imageURL:\(url)")
+        }
+        results.append(item)
+
         delegate?.addItemViewController(self , finishedAddItems: item)
         }
 }

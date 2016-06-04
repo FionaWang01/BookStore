@@ -172,9 +172,17 @@ class SearchViewController: UIViewController {
                 controller.searchDetailResult = searchResults[indexPath.row]
             }
         }
-    }
+        
+        if segue.identifier == "ShowStarBook"{
+                let navigationController = segue.destinationViewController as! UINavigationController
+                let controller = navigationController.topViewController as! BookMarkTableView
+                controller.searchResult = searchResults
+
+        }
     
+    }
 }
+
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isLoading{
