@@ -22,30 +22,26 @@ class BookMarkTableView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
-        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
-                self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
-        }
-        title = "Book Mark 📚"
         bookMarkTableView.rowHeight = 50
-        
+       
     }
 
     @IBAction func returnButton(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true , completion: nil )
     }
     
-    @IBAction func addItem(sender: UIBarButtonItem) {
-        
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
+
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -56,7 +52,7 @@ class BookMarkTableView: UITableViewController {
         let image = cell.viewWithTag(101) as! UIImageView
         let title = cell.viewWithTag(102) as! UILabel
         let time = cell.viewWithTag(103) as! UILabel
-        image.image = UIImage(named: "Placeholder")
+       image.image = UIImage(named: "Placeholder")
         if let url = NSURL(string:item.mediumImage){
             downloadTask = image.loadImageWithURL(url)
         }

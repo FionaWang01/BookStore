@@ -43,7 +43,9 @@ class DetialViewController: UIViewController {
         super.viewDidLoad()
         textView.backgroundColor = UIColor.clearColor()
          textView.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17.0)
-
+        priceLabel.layer.cornerRadius = 5
+        priceLabel.clipsToBounds = true
+ 
         updateUI()
     }
     
@@ -83,10 +85,7 @@ class DetialViewController: UIViewController {
         let item = SearchResult()
         item.title = bookNameText.text
         item.author = authorLabel.text!
-        if let url = NSURL(string: item.mediumImage){
-            downloadTask = menuImage.loadImageWithURL(url)
-            print("imageURL:\(url)")
-        }
+        item.mediumImage = searchDetailResult.mediumImage
         results.append(item)
 
         delegate?.addItemViewController(self , finishedAddItems: item)

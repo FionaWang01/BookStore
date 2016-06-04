@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     var downloadTask: NSURLSessionDownloadTask?
     var isLoading = false
     static let loadingCell = "LoadingView"
+    var hadTap = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,13 +174,15 @@ class SearchViewController: UIViewController {
             }
         }
         
-        if segue.identifier == "ShowStarBook"{
-                let navigationController = segue.destinationViewController as! UINavigationController
-                let controller = navigationController.topViewController as! BookMarkTableView
-                controller.searchResult = searchResults
-
-        }
-    
+//        if segue.identifier == "ShowStarBook"{
+//                let navigationController = segue.destinationViewController as! UINavigationController
+//                let controller = navigationController.topViewController as! DetialViewController
+//                let secNavi = segue.destinationViewController as! UINavigationController
+//                let desController = secNavi.topViewController as! BookMarkTableView
+//                controller.results = desController.searchResult
+//
+//        }
+//    
     }
 }
 
@@ -209,6 +212,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         let nameLabel = cell.viewWithTag(1000) as! UILabel
         let detailLabel = cell.viewWithTag(2000) as! UILabel
         let image = cell.viewWithTag(3000) as! UIImageView
+        let starButton = cell.viewWithTag(4000) as! UIButton
         let indexPath = searchResults[indexPath.row]
         nameLabel.text = indexPath.title
         detailLabel.text = indexPath.author
@@ -218,7 +222,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         if let url = NSURL(string:indexPath.largeImage){
             downloadTask = image.loadImageWithURL(url)
         }
-        return cell
+        
+        if starButton.touchInside{
+            starButton.titleLabel?.text = "★"
+            starButton.tintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
+
+        }
+            
+            return cell
         }
     }
     
