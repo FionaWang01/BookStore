@@ -18,7 +18,7 @@
 		F29DB1A11CF0266100673010 /* DetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DB1A01CF0266100673010 /* DetialViewController.swift */; };
 		F29DB1A31CF026B300673010 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DB1A21CF026B300673010 /* UIImageView+DownloadImage.swift */; };
 		F29DB1A51CF026DE00673010 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29DB1A41CF026DE00673010 /* SearchResult.swift */; };
-		F2EEBDFC1CF09F500052B467 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EEBDFB1CF09F500052B467 /* BookTableViewCell.swift */; };
+		F2C7E22B1D08541100BC1843 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C7E22A1D08541100BC1843 /* SearchTableViewCell.swift */; };
 		F2F21C4F1CF4A071009762BF /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F21C4E1CF4A071009762BF /* NothingFoundCell.xib */; };
 		F2F21C511CF6D0AF009762BF /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2F21C501CF6D0AF009762BF /* LoadingView.xib */; };
 		F2F21C531CF6E565009762BF /* BookMarkTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F21C521CF6E565009762BF /* BookMarkTableView.swift */; };
@@ -60,7 +60,7 @@
 		F29DB1A01CF0266100673010 /* DetialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetialViewController.swift; sourceTree = "<group>"; };
 		F29DB1A21CF026B300673010 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		F29DB1A41CF026DE00673010 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		F2EEBDFB1CF09F500052B467 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookTableViewCell.swift; path = ../BookTableViewCell.swift; sourceTree = "<group>"; };
+		F2C7E22A1D08541100BC1843 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		F2F21C4E1CF4A071009762BF /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		F2F21C501CF6D0AF009762BF /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		F2F21C521CF6E565009762BF /* BookMarkTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMarkTableView.swift; sourceTree = "<group>"; };
@@ -119,10 +119,10 @@
 				F29DB1711CF0242B00673010 /* SearchViewController.swift */,
 				F29DB1A01CF0266100673010 /* DetialViewController.swift */,
 				F2F21C521CF6E565009762BF /* BookMarkTableView.swift */,
+				F2C7E22A1D08541100BC1843 /* SearchTableViewCell.swift */,
 				F2F21C541CF6E98F009762BF /* CoreDataStake.swift */,
 				F29DB1A21CF026B300673010 /* UIImageView+DownloadImage.swift */,
 				F29DB1A41CF026DE00673010 /* SearchResult.swift */,
-				F2EEBDFB1CF09F500052B467 /* BookTableViewCell.swift */,
 				F29DB1731CF0242B00673010 /* Main.storyboard */,
 				F2F21C4E1CF4A071009762BF /* NothingFoundCell.xib */,
 				F2F21C501CF6D0AF009762BF /* LoadingView.xib */,
@@ -285,12 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C7E22B1D08541100BC1843 /* SearchTableViewCell.swift in Sources */,
 				F29DB1721CF0242B00673010 /* SearchViewController.swift in Sources */,
 				F29DB1701CF0242B00673010 /* AppDelegate.swift in Sources */,
 				F2F21C551CF6E98F009762BF /* CoreDataStake.swift in Sources */,
 				F29DB1781CF0242B00673010 /* BookStore.xcdatamodeld in Sources */,
 				F2F21C531CF6E565009762BF /* BookMarkTableView.swift in Sources */,
-				F2EEBDFC1CF09F500052B467 /* BookTableViewCell.swift in Sources */,
 				F29DB1A11CF0266100673010 /* DetialViewController.swift in Sources */,
 				F29DB1A51CF026DE00673010 /* SearchResult.swift in Sources */,
 				F29DB1A31CF026B300673010 /* UIImageView+DownloadImage.swift in Sources */,

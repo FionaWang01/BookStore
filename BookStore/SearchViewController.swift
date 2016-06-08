@@ -208,26 +208,22 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         }else if searchResults.count == 0 {
             return  tableView.dequeueReusableCellWithIdentifier("NothingFoundCell", forIndexPath: indexPath)
         }else{
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let nameLabel = cell.viewWithTag(1000) as! UILabel
-        let detailLabel = cell.viewWithTag(2000) as! UILabel
-        let image = cell.viewWithTag(3000) as! UIImageView
-        let starButton = cell.viewWithTag(4000) as! UIButton
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SearchTableViewCell
+//        let nameLabel = cell.viewWithTag(1000) as! UILabel
+//        let detailLabel = cell.viewWithTag(2000) as! UILabel
+//        let image = cell.viewWithTag(3000) as! UIImageView
+//        let starButton = cell.viewWithTag(4000) as! UIButton
+
         let indexPath = searchResults[indexPath.row]
-        nameLabel.text = indexPath.title
-        detailLabel.text = indexPath.author
-        image.image = UIImage(named: "Placeholder")
-        image.layer.cornerRadius = image.frame.size.width/2
-        image.clipsToBounds = true
+        cell.bookNameLabel.text = indexPath.title
+        cell.authorLabel.text = indexPath.author
+        cell.bookImage.image = UIImage(named: "Placeholder")
+        cell.bookImage.layer.cornerRadius = cell.bookImage.frame.size.width/2
+        cell.bookImage.clipsToBounds = true
         if let url = NSURL(string:indexPath.largeImage){
-            downloadTask = image.loadImageWithURL(url)
+            downloadTask = cell.bookImage.loadImageWithURL(url)
         }
         
-        if starButton.touchInside{
-            starButton.titleLabel?.text = "★"
-            starButton.tintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
-
-        }
             
             return cell
         }

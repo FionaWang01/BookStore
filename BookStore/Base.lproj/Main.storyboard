@@ -22,29 +22,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="OCe-Eg-BlR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="OCe-Eg-BlR" customClass="SearchTableViewCell" customModule="BookStore" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OCe-Eg-BlR" id="BQb-zX-07f">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="3000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFb-8P-bPj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFb-8P-bPj">
                                                     <rect key="frame" x="8" y="7" width="65" height="65"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03n-Jw-pSG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03n-Jw-pSG">
                                                     <rect key="frame" x="81" y="8" width="206" height="37"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="22"/>
                                                     <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vi-PS-4K2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vi-PS-4K2">
                                                     <rect key="frame" x="81" y="43" width="206" height="21"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="14"/>
                                                     <color key="textColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="4000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmZ-uN-kYC">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmZ-uN-kYC">
                                                     <rect key="frame" x="547" y="27" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="9qf-Nw-OMn"/>
@@ -54,6 +54,9 @@
                                                     <state key="normal" title="☆">
                                                         <color key="titleColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="0.4899704391891892" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="mark:" destination="OCe-Eg-BlR" eventType="touchUpInside" id="tm7-vh-6AR"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -64,6 +67,10 @@
                                             <constraint firstAttribute="trailing" secondItem="pmZ-uN-kYC" secondAttribute="trailing" constant="28" id="HPv-b1-FL5"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="authorLabel" destination="9Vi-PS-4K2" id="HNb-aZ-TbI"/>
+                                            <outlet property="bookImage" destination="lFb-8P-bPj" id="UX4-Ii-8Yq"/>
+                                            <outlet property="bookNameLabel" destination="03n-Jw-pSG" id="o2L-Kt-itT"/>
+                                            <outlet property="markButton" destination="pmZ-uN-kYC" id="4av-Bd-sdd"/>
                                             <segue destination="Wyr-v4-UjX" kind="presentation" identifier="showItem" id="7ZD-sl-YMi"/>
                                         </connections>
                                     </tableViewCell>
@@ -354,7 +361,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Odj-S4-rJa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x9P-42-wTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gaT-OO-nIx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="ri2-h7-3Yv"/>
                     <toolbarItems/>
@@ -367,6 +373,7 @@
                         <segue destination="PUL-7R-kDf" kind="relationship" relationship="rootViewController" id="nsK-s9-IyS"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9P-42-wTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3436" y="-435"/>
         </scene>
@@ -391,6 +398,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gWB-r4-ohf"/>
+        <segue reference="frF-yF-awn"/>
     </inferredMetricsTieBreakers>
 </document>

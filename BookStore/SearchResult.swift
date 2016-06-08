@@ -8,8 +8,6 @@
 
 import Foundation
 
-import UIKit
-
 class SearchResult{
     var id = ""
     var title = ""
@@ -24,4 +22,9 @@ class SearchResult{
     var mediumImage = ""
     var smallImage = ""
     var largeImage = ""
+     var checked = false
+    func toggleChecked() {
+        checked = !checked
+    }
+
 }
