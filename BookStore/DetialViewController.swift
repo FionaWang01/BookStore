@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 protocol DetialViewControllerDelegate {
@@ -33,6 +34,7 @@ class DetialViewController: UIViewController {
    var delegate : DetialViewControllerDelegate?
     
     var results = [SearchResult]()
+    var markBooks = [NSManagedObject]()
 
     var downloadTask:NSURLSessionDownloadTask?
     
@@ -90,5 +92,6 @@ class DetialViewController: UIViewController {
 
         delegate?.addItemViewController(self , finishedAddItems: item)
         }
+    
 }
 
