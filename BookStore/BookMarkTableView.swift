@@ -23,6 +23,11 @@ class BookMarkTableView: UITableViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 260.0/255.0, green: 72.0/255.0, blue: 117.0/255.0, alpha: 1)
         bookMarkTableView.rowHeight = 50
+        title = "Favorite"
+        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 22.0){
+                        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor(), NSFontAttributeName:barFont]
+
+        }
        
     }
 

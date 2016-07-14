@@ -18,11 +18,13 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var markButton: UIButton!
     
     @IBAction func mark(sender: UIButton) {
-        if markButton.enabled{
-            markButton.titleLabel!.text = "★"
-        }else {
-            markButton.titleLabel?.text = "☆"
-        }
+        
+        
+//        if markButton.pointInside(<#T##point: CGPoint##CGPoint#>{
+//            markButton.titleLabel!.text = "★"
+//        }else {
+//            markButton.titleLabel?.text = "☆"
+//        }
     }
     
 
